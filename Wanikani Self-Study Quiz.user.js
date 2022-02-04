@@ -605,6 +605,8 @@ window.ss_quiz = {};
 
             '#ss_quiz[data-mode="question"] .question {display:block;}'+
             '#ss_quiz .question {overflow-x:auto; overflow-y:hidden; color:#fff; text-align:center; line-height:1.1em; font-size:1em; cursor:default;}'+
+            '#ss_quiz .question a {color: white;}'+
+            '#ss_quiz .question a:hover {text-shadow: 2px 2px 2px #666;}'+
             '#ss_quiz .question .fa-audio {font-size:2.5em; cursor:pointer;}'+
 
             '#ss_quiz[data-mode="summary"] .summary {display:block;}'+
@@ -1312,11 +1314,15 @@ window.ss_quiz = {};
                 if (qinfo.item.type === 'radical' && !item.data.characters) {
                     var svg_url = item.data.character_images.filter(is_svg)[0].url;
                     qinfo.question.svg_promise = wkof.load_file(svg_url).then(function(svg){
-                        qinfo.question.html = svg;
+                        qinfo.question.html = '<a href="'
+                            + item.data.document_url
+                        + '" target="_blank">' + svg + '</a>';
                         return qinfo;
                     });
                 } else {
-                    qinfo.question.html = item.data.characters;
+                    qinfo.question.html = '<a href="'
+                        + item.data.document_url
+                    + '" target="_blank">' + item.data.characters + '</a>';
                 }
                 break;
 
