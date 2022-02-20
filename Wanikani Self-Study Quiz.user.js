@@ -1282,7 +1282,7 @@ window.ss_quiz = {};
             meanings = meanings.concat(synonyms).map(meaning => meaning.toLowerCase());
         }
 
-        if (qinfo.item.type === 'vocabulary') {
+        if (qinfo.item.type === 'vocabulary' && qinfo.answer.type == 'reading') {
             qinfo.question.audio_promise = new Promise(function(resolve, reject){
                 qinfo.question.audio = new Audio();
                 qinfo.question.audio.oncanplaythrough = function(){
