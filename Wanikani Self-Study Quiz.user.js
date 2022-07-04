@@ -831,6 +831,7 @@ window.ss_quiz = {};
             settings.active_ipreset = selected;
             wkof.Settings.save('ss_quiz');
         }
+        delete quiz.original_items;
         fetch_items().then(quiz.start);
     }
 
