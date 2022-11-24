@@ -545,7 +545,7 @@ window.ss_quiz = {};
             '#ss_quiz .statusbar {line-height:1em; color:rgba(255,255,255,0.5); background-color:rgba(32,32,32,0.85);}'+
 
             '#ss_quiz .settings {float:left; padding:6px 8px; text-align:left; line-height:1.5em; font-size:0.875em;}'+
-            '#ss_quiz .settings span[class*="icon-"] {font-size:1.3em; padding:0 2px;}'+
+            '#ss_quiz .settings span.fa {font-size:1.3em; padding:0 2px;}'+
             '#ss_quiz .settings .ss_audio {padding-left:0; padding-right:4px;}'+
             '#ss_quiz .settings .ss_done {font-size:1.25em;}'+
             '#ss_quiz .settings .ss_pair {font-weight:bold;}'+
