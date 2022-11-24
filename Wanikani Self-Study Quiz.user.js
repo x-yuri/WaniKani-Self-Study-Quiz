@@ -2,11 +2,17 @@
 // @name        Wanikani Self-Study Quiz
 // @namespace   rfindley
 // @description Quiz yourself on Wanikani items
-// @version     3.0.35
-// @include     /^https://(www|preview).wanikani.com//
-// @exclude     /^https://(www|preview).wanikani.com/(review|lesson)/
+// @version     3.0.37
+// @match       https://www.wanikani.com/*
+// @exclude     https://www.wanikani.com/extra_study/*
+// @exclude     https://www.wanikani.com/lesson/*
+// @exclude     https://www.wanikani.com/review/*
+// @match       https://preview.wanikani.com/*
+// @exclude     https://preview.wanikani.com/extra_study/*
+// @exclude     https://preview.wanikani.com/lesson/*
+// @exclude     https://preview.wanikani.com/review/*
 // @require     https://unpkg.com/wanakana@4.0.2/umd/wanakana.min.js
-// @copyright   2018+, Robin Findley
+// @copyright   2022+, Robin Findley
 // @license     MIT; http://opensource.org/licenses/MIT
 // @run-at      document-end
 // @grant       none
@@ -23,7 +29,7 @@ window.ss_quiz = {};
     // Initialization of the Wanikani Open Framework.
     //-------------------------------------------------------------------
     var script_name =  'Self-Study Quiz';
-    var wkof_version_needed = '1.0.17';
+    var wkof_version_needed = '1.0.59';
     if (!window.wkof) {
         if (confirm(script_name+' requires Wanikani Open Framework.\nDo you want to be forwarded to the installation instructions?')) {
             window.location.href = 'https://community.wanikani.com/t/instructions-installing-wanikani-open-framework/28549';
@@ -37,8 +43,8 @@ window.ss_quiz = {};
         return;
     }
 
-    wkof.include('Menu');
-    wkof.ready('Menu').then(install_menu);
+    wkof.include('Jquery,Menu');
+    wkof.ready('Jquery,Menu').then(install_menu);
 
     function install_menu() {
         wkof.Menu.insert_script_link({
@@ -536,7 +542,7 @@ window.ss_quiz = {};
             '#ss_quiz .prev {float:left;}'+
             '#ss_quiz .next {float:right;}'+
 
-            '#ss_quiz .cfgbar {background-color:rgba(32,32,32,0.85); padding:4px 0; border-bottom:1px solid #444;}'+
+            '#ss_quiz .cfgbar {background-color:rgba(32,32,32,0.85); padding:4px 0; border-bottom:1px solid #444;white-space:nowrap;}'+
             '#ss_quiz .cfgbar select {margin:0; background:transparent; color:rgba(255,255,255,0.5); border:1px solid #777; width:248px; height:2em; text-align:left; font-size:0.875em; border-radius:4px; padding:4px 6px;}'+
             '#ss_quiz .cfgbar option {color:#000;}'+
             '#ss_quiz .cfgbar .button {display:inline-block; width:24px; height:24px; cursor:pointer; color:#777; font-size:24px; vertical-align:middle;}'+
@@ -1265,6 +1271,9 @@ window.ss_quiz = {};
         var synonyms = [];
         try {synonyms = item.study_materials.meaning_synonyms || [];} catch(e) {}
         var meanings = item.data.meanings.map(meaning => meaning.meaning);
+        if (typeof item.data.auxiliary_meanings !== 'undefined') {
+            meanings = meanings.concat(item.data.auxiliary_meanings.filter(m=>m.type==='whitelist').map(m=>m.meaning))
+        }
         if (quiz.settings.synonyms_order === 'first') {
             meanings = synonyms.concat(meanings).map(meaning => meaning.toLowerCase());
         } else {
@@ -1455,7 +1464,7 @@ window.ss_quiz = {};
                         is_correct = true;
                         is_exact = true;
                         break;
-                    } else if (allow_typos && jw_distance(good_answer, answer) > 0.9) {
+                    } else if (allow_typos && (good_answer.match(/[0-9]/) == null) && jw_distance(good_answer, answer) > 0.9) {
                         is_correct = true;
                     }
                 }
