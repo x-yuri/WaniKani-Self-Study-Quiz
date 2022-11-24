@@ -91,13 +91,13 @@ window.ss_quiz = {};
                         sect_qpre_name: {type:'section',label:'Preset Name'},
                         qpre_name: {type:'text',label:'Edit Preset Name',on_change:refresh_qpresets,path:'@qpresets[@active_qpreset].name',hover_tip:'Enter a name for the selected preset'},
 
-                        sect_qpre_question: {type:'section',label:'Questions <span class="fa fa-circle-arrow-right icon-circle-arrow-right"></span> Answers'},
-                        char2mean: {type:'checkbox',label:'Rad/Kan/Voc <span class="fa fa-circle-arrow-right icon-circle-arrow-right"></span> Meaning',path:'@qpresets[@active_qpreset].content.char2mean',hover_tip:'Question: A radical or kanji character, or vocab word drawn with kanji\nAnswer: The meaning in English'},
-                        char2read: {type:'checkbox',label:'Kan/Voc <span class="fa fa-circle-arrow-right icon-circle-arrow-right"></span> Reading',path:'@qpresets[@active_qpreset].content.char2read',hover_tip:'Question: A kanji character, or vocab word drawn with kanji\nAnswer: The Japanese reading, in hiragana or katakana'},
-                        read2mean: {type:'checkbox',label:'Voc Reading <span class="fa fa-circle-arrow-right icon-circle-arrow-right"></span> Meaning',path:'@qpresets[@active_qpreset].content.read2mean',hover_tip:'Question: A kanji or vocab reading, in hiragana or katakana\nAnswer: The meaning in English'},
-                        mean2read: {type:'checkbox',label:'Voc Meaning <span class="fa fa-circle-arrow-right icon-circle-arrow-right"></span> Reading',path:'@qpresets[@active_qpreset].content.mean2read',hover_tip:'Question: A vocab word in English\nAnswer: The Japanese reading, in hiragana or katakana'},
-                        aud2mean: {type:'checkbox',label:'Voc Audio <span class="fa fa-circle-arrow-right icon-circle-arrow-right"></span> Meaning',path:'@qpresets[@active_qpreset].content.aud2mean',hover_tip:'Question: A vocab word, in spoken audio\nAnswer: The meaning in English'},
-                        aud2read: {type:'checkbox',label:'Voc Audio <span class="fa fa-circle-arrow-right icon-circle-arrow-right"></span> Reading',path:'@qpresets[@active_qpreset].content.aud2read',hover_tip:'Question: A vocab word, in spoken audio\nAnswer: The Japanese reading, in hiragana or katakana'},
+                        sect_qpre_question: {type:'section',label:'Questions <span class="fa fa-circle-arrow-right"></span> Answers'},
+                        char2mean: {type:'checkbox',label:'Rad/Kan/Voc <span class="fa fa-circle-arrow-right"></span> Meaning',path:'@qpresets[@active_qpreset].content.char2mean',hover_tip:'Question: A radical or kanji character, or vocab word drawn with kanji\nAnswer: The meaning in English'},
+                        char2read: {type:'checkbox',label:'Kan/Voc <span class="fa fa-circle-arrow-right"></span> Reading',path:'@qpresets[@active_qpreset].content.char2read',hover_tip:'Question: A kanji character, or vocab word drawn with kanji\nAnswer: The Japanese reading, in hiragana or katakana'},
+                        read2mean: {type:'checkbox',label:'Voc Reading <span class="fa fa-circle-arrow-right"></span> Meaning',path:'@qpresets[@active_qpreset].content.read2mean',hover_tip:'Question: A kanji or vocab reading, in hiragana or katakana\nAnswer: The meaning in English'},
+                        mean2read: {type:'checkbox',label:'Voc Meaning <span class="fa fa-circle-arrow-right"></span> Reading',path:'@qpresets[@active_qpreset].content.mean2read',hover_tip:'Question: A vocab word in English\nAnswer: The Japanese reading, in hiragana or katakana'},
+                        aud2mean: {type:'checkbox',label:'Voc Audio <span class="fa fa-circle-arrow-right"></span> Meaning',path:'@qpresets[@active_qpreset].content.aud2mean',hover_tip:'Question: A vocab word, in spoken audio\nAnswer: The meaning in English'},
+                        aud2read: {type:'checkbox',label:'Voc Audio <span class="fa fa-circle-arrow-right"></span> Reading',path:'@qpresets[@active_qpreset].content.aud2read',hover_tip:'Question: A vocab word, in spoken audio\nAnswer: The Japanese reading, in hiragana or katakana'},
                     }},
                 }},
                 pg_items: {type:'page',label:'Items',hover_tip:'Choose what items you want to be quizzed on',content:{
@@ -155,8 +155,8 @@ window.ss_quiz = {};
         var btn_grp =
             '<div class="pre_list_btn_grp">'+
             '<button type="button" ref="###" action="new" class="ui-button ui-corner-all ui-widget" title="Create a new preset">New</button>'+
-            '<button type="button" ref="###" action="up" class="ui-button ui-corner-all ui-widget" title="Move the selected preset up in the list"><span class="fa fa-arrow-up icon-style"></span></button>'+
-            '<button type="button" ref="###" action="down" class="ui-button ui-corner-all ui-widget" title="Move the selected preset down in the list"><span class="fa fa-arrow-down icon-style"></span></button>'+
+            '<button type="button" ref="###" action="up" class="ui-button ui-corner-all ui-widget" title="Move the selected preset up in the list"><span class="fa fa-arrow-up"></span></button>'+
+            '<button type="button" ref="###" action="down" class="ui-button ui-corner-all ui-widget" title="Move the selected preset down in the list"><span class="fa fa-arrow-down"></span></button>'+
             '<button type="button" ref="###" action="delete" class="ui-button ui-corner-all ui-widget" title="Delete the selected preset">Delete</button>'+
             '</div>';
 
@@ -688,23 +688,23 @@ window.ss_quiz = {};
             '  <div class="cfgbar">'+
             '    <select id="ss_quiz_qna" title="Choose what quiz questions you want to be asked"></select>'+
             '    <select id="ss_quiz_source" title="Choose what items you want to be quizzed on"></select>'+
-            '    <span class="fa fa-repeat icon-style shuffle button" title="Shuffle Quiz (Ctrl-S)\nDouble-click to reset Round counter"></span>'+
-            '    <span class="fa fa-cog icon-style config button" title="Configure presets"></span>'+
+            '    <span class="fa fa-repeat shuffle button" title="Shuffle Quiz (Ctrl-S)\nDouble-click to reset Round counter"></span>'+
+            '    <span class="fa fa-cog config button" title="Configure presets"></span>'+
             '  </div>'+
             '  <div class="statusbar">'+
             '    <div class="settings noselect">'+
-            '      <span class="fa fa-bolt icon-style ss_lightning" title="Lightning Mode: Skip <enter> on correct answers (Ctrl-L)"></span>'+
-            '      <span class="fa fa-audio icon-style ss_audio" title="Toggle when to play audio (Ctrl-Shift-A)\n* Red = Never play audio\n* Gray = Audio questions only\n* Yellow = Audio questions, After correct reading, Opening help for reading\n\nTo play audio immediately, press (Ctrl-A)"></span>'+
-            '      <span class="fa fa-question icon-style ss_help" title="Help: Peek at item info (F1, Ctrl-H, or ?)"></span>'+
-            '      <span class="fa fa-step-forward icon-style ss_done" title="End the quiz and show summary (Esc or Ctrl-E)"></span><br />'+
+            '      <span class="fa fa-bolt ss_lightning" title="Lightning Mode: Skip <enter> on correct answers (Ctrl-L)"></span>'+
+            '      <span class="fa fa-audio ss_audio" title="Toggle when to play audio (Ctrl-Shift-A)\n* Red = Never play audio\n* Gray = Audio questions only\n* Yellow = Audio questions, After correct reading, Opening help for reading\n\nTo play audio immediately, press (Ctrl-A)"></span>'+
+            '      <span class="fa fa-question ss_help" title="Help: Peek at item info (F1, Ctrl-H, or ?)"></span>'+
+            '      <span class="fa fa-step-forward ss_done" title="End the quiz and show summary (Esc or Ctrl-E)"></span><br />'+
             '      <span class="ss_pair" title="Pairing mode: Group reading and meaning together (Ctrl-P)">Pairing: <span class="data">Disabled</span></span>'+
             '    </div>'+
             '    <div class="stats"></div>'+
             '    <div class="stats_labels">Round:<br>Remaining:<br>Correct:<br>Incorrect:</div>'+
             '  </div>'+
             '  <div class="qwrap">'+
-            '    <div class="prev" title="Previous question (Ctrl-Left)"><i class="fa fa-chevron-left icon-style"></i></div>'+
-            '    <div class="next" title="Next question (Ctrl-Right)"><i class="fa fa-chevron-right icon-style"></i></div>'+
+            '    <div class="prev" title="Previous question (Ctrl-Left)"><i class="fa fa-chevron-left"></i></div>'+
+            '    <div class="next" title="Next question (Ctrl-Right)"><i class="fa fa-chevron-right"></i></div>'+
             '    <div class="question center"></div>'+
             '    <div class="help"></div>'+
             '    <div class="message"></div>'+
@@ -1681,7 +1681,7 @@ window.ss_quiz = {};
             }
             var qtext = item.data.slug;
             if (qtype === 'audio') {
-                qtext += ' <i class="fa fa-audio icon-style"></i>';
+                qtext += ' <i class="fa fa-audio"></i>';
             } else if (qtype === 'meaning') {
                 synonyms = [];
                 try {synonyms = item.study_materials.meaning_synonyms || [];} catch(e) {}
@@ -1696,7 +1696,7 @@ window.ss_quiz = {};
             var atext = answer + ' <i class="fa fa-times-circle wrong"></i>';
             err_list.append(
                 '<li><span class="que" lang="'+qlang+'" title="'+qtitle+'">'+qtext+'</span>'+
-                '<i class="fa fa-long-arrow-right icon-style"></i>'+
+                '<i class="fa fa-long-arrow-right"></i>'+
                 '<span class="ans" lang="'+alang+'" title="'+atitle+'">'+atext+'</span></li>'
             );
         }
